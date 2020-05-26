@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.app {
+  margin: 2rem auto;
+  max-width: 500px;
+  text-align: center;
+}
+form {
+  input {
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid orangered;
+    border-radius: 0.5rem 0 0 0.5rem;
+    padding: 0.5rem;
+    &:focus {
+      outline: none;
+      border: 2px solid orangered;
+      padding: 7px;
+    }
+  }
+  button {
+    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid orangered;
+    border-left: none;
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 0.5rem;
+    background: none;
+    &:hover {
+      background: orangered;
+      color: white;
+    }
+  }
+}
+.searchList {
+  max-width: 350px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  h3 {
+    width: 100%;
+  }
+  .last {
+    color: orangered;
+    font-weight: bold;
+  }
+}
+.searchItem {
+  margin: 0 0.5rem 0.5rem 0;
+  &:hover {
+    cursor: pointer;
+    color: orangered;
+  }
+}
+.card {
+  max-width: 350px;
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  text-align: start;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 0.5rem 0 lightgray;
+  .cardTitle {
+    margin: 0.5rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  p {
+    width: 100%;
+    margin: 0.25rem auto;
+  }
+  button {
+    cursor: pointer;
+    outline: none;
+    border: 2px solid orangered;
+    background: none;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+    &:hover {
+      background: orangered;
+      color: white;
+    }
+  }
+}

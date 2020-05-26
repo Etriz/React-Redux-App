@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 
 import { deckReducer } from "./reducers/deckReducer";
 
-import "./css/index.css";
+import "./css/index.scss";
 import App from "./App";
 
 const store = createStore(deckReducer, applyMiddleware(thunk));

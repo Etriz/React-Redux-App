@@ -1,18 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getData } from "../actions/actions";
 
 const CardDisplay = (props) => {
+  const handleClick = (name) => {
+    props.getData(name);
+  };
+
   return (
     <div>
       {props.isFetchingData ? (
         <h3>Fetching Card Data...</h3>
       ) : props.cardData.length > 1 ? (
-        <>
+        <div className="searchList">
           <h3>{`${props.cardData.length} results found ...`}</h3>
-          {props.cardData.map((card, index) => (
-            <span key={index}>{card.name}, </span>
-          ))}
-        </>
+          {props.cardData.map((card, index) =>
+            index < 50 ? (
+              <span className="searchItem" key={index} onClick={() => handleClick(card.name)}>
+                {card.name},{" "}
+              </span>
+            ) : index === 50 ? (
+              <span className="last">...and more. Refine search to see them.</span>
+            ) : null
+          )}
+        </div>
       ) : props.cardData.length === 1 ? (
         <CardInfo card={props.cardData[0]} />
       ) : (
@@ -25,11 +36,12 @@ const CardDisplay = (props) => {
 const CardInfo = ({ card }) => {
   return (
     <div className="card">
-      <h3>
-        {card.name} {card.mana_cost}
-      </h3>
+      <div className="cardTitle">
+        <span>{card.name}</span> <span>{card.mana_cost}</span>
+      </div>
       <p>{card.type_line}</p>
       <p>{card.oracle_text}</p>
+      <p>{card.power ? `${card.power} / ${card.toughness}` : null}</p>
       <button>Add to Deck</button>
     </div>
   );
@@ -43,4 +55,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(CardDisplay);
+export default connect(mapStateToProps, { getData })(CardDisplay);

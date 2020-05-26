@@ -10,6 +10,8 @@ const CardSearch = (props) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    document.activeElement.blur();
+    setInputValue("");
     props.getData(inputValue);
   };
   return (

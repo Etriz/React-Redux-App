@@ -23,8 +23,11 @@ export const deckReducer = (state = initialState, action) => {
         error: "",
       };
 
-    // case actionTypes.ADD:
-    //   return state;
+    case actionTypes.ADD:
+      return {
+        ...state,
+        deckData: [...state.deckData, action.payload],
+      };
     case actionTypes.ERROR:
       return {
         ...state,

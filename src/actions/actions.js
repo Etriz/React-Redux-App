@@ -23,7 +23,7 @@ export const getData = (value) => (dispatch) => {
     .catch((err) => {
       console.error("API fetch error", err.response.data);
       const message = () => {
-        if (err.response.status === 404) {
+        if (err.response.status === 404 || err.response.status === 400) {
           return "Your search didn't match any cards.";
         } else return "Something went wrong. Please try again later.";
       };
