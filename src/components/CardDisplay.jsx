@@ -15,7 +15,9 @@ const CardDisplay = (props) => {
         </>
       ) : props.cardData.length === 1 ? (
         <CardInfo card={props.cardData[0]} />
-      ) : null}
+      ) : (
+        <h3>{props.error}</h3>
+      )}
     </div>
   );
 };
@@ -37,6 +39,7 @@ const mapStateToProps = (state) => {
   return {
     isFetchingData: state.isFetchingData,
     cardData: state.cardData,
+    error: state.error,
   };
 };
 

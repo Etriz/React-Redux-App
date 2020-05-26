@@ -21,7 +21,12 @@ export const getData = (value) => (dispatch) => {
       dispatch({ type: actionTypes.VIEW, payload: cardData });
     })
     .catch((err) => {
-      console.error("API fetch error", err);
-      dispatch({ type: actionTypes.ERROR });
+      console.error("API fetch error", err.response.data);
+      const message = () => {
+        if (err.response.status === 404) {
+          return "Your search didn't match any cards.";
+        } else return "Something went wrong. Please try again later.";
+      };
+      dispatch({ type: actionTypes.ERROR, payload: message() });
     });
 };

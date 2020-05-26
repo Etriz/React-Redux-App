@@ -20,12 +20,18 @@ export const deckReducer = (state = initialState, action) => {
         ...state,
         isFetchingData: false,
         cardData: [...action.payload],
+        error: "",
       };
 
     // case actionTypes.ADD:
     //   return state;
-    // case actionTypes.ERROR:
-    //   return state;
+    case actionTypes.ERROR:
+      return {
+        ...state,
+        isFetchingData: false,
+        cardData: [],
+        error: action.payload,
+      };
 
     default:
       return state;
