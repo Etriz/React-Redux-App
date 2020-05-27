@@ -4,6 +4,7 @@ export const actionTypes = {
   GET: "GET_DATA",
   VIEW: "VIEW_CARD",
   ADD: "ADD_CARD",
+  REMOVE: "REMOVE_CARD",
   ERROR: "SET_ERROR",
 };
 
@@ -29,4 +30,7 @@ export const getData = (value) => (dispatch) => {
       };
       dispatch({ type: actionTypes.ERROR, payload: message() });
     });
+};
+export const addToDeck = (value) => (dispatch) => {
+  dispatch({ type: actionTypes.ADD, payload: value });
 };

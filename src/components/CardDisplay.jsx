@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { getData } from "../actions/actions";
+import { getData, addToDeck } from "../actions/actions";
 
 const CardDisplay = (props) => {
   const handleClick = (name) => {
@@ -25,7 +25,7 @@ const CardDisplay = (props) => {
           )}
         </div>
       ) : props.cardData.length === 1 ? (
-        <CardInfo card={props.cardData[0]} />
+        <CardInfo card={props.cardData[0]} addToDeck={props.addToDeck} />
       ) : (
         <h3>{props.error}</h3>
       )}
@@ -33,7 +33,12 @@ const CardDisplay = (props) => {
   );
 };
 
-const CardInfo = ({ card }) => {
+const CardInfo = ({ card, addToDeck }) => {
+  const [numToAdd, setNumToAdd] = useState("1");
+  const handleChange = (e) => {
+    console.log("input change");
+    setNumToAdd(e.target.value);
+  };
   return (
     <div className="card">
       <div className="cardTitle">
@@ -42,7 +47,16 @@ const CardInfo = ({ card }) => {
       <p>{card.type_line}</p>
       <p>{card.oracle_text}</p>
       <p>{card.power ? `${card.power} / ${card.toughness}` : null}</p>
-      <button>Add to Deck</button>
+      <input
+        type="number"
+        min="1"
+        max="4"
+        value={numToAdd}
+        onChange={(e) => {
+          handleChange(e);
+        }}
+      />
+      <button onClick={() => addToDeck({ name: card.name, number: numToAdd })}>Add to Deck</button>
     </div>
   );
 };
@@ -55,4 +69,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getData })(CardDisplay);
+export default connect(mapStateToProps, { getData, addToDeck })(CardDisplay);

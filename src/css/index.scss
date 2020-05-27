@@ -7,11 +7,15 @@ body {
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: whitesmoke;
 }
 .app {
-  margin: 2rem auto;
+  margin: 0 auto;
+  padding: 2rem 0;
   max-width: 500px;
   text-align: center;
+  min-height: 100vh;
+  // border: 1px solid gray;
 }
 form {
   input {
@@ -34,7 +38,7 @@ form {
     border-left: none;
     border-radius: 0 0.5rem 0.5rem 0;
     padding: 0.5rem;
-    background: none;
+    background: white;
     &:hover {
       background: orangered;
       color: white;
@@ -73,30 +77,54 @@ form {
   border: 1px solid gray;
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 0.5rem 0 lightgray;
+  background: white;
   .cardTitle {
     margin: 0.5rem 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: bold;
   }
   p {
     width: 100%;
     margin: 0.25rem auto;
   }
+  input {
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid orangered;
+    border-radius: 0.5rem 0 0 0.5rem;
+    text-align: center;
+    padding: 0 0.25rem;
+    margin: 0.5rem 0 0;
+    height: 2.5rem;
+  }
   button {
     cursor: pointer;
     outline: none;
-    border: 2px solid orangered;
+    border: 1px solid orangered;
     background: none;
-    border-radius: 0.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
     margin: 0.5rem 0 0;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     font-size: 1rem;
     &:hover {
       background: orangered;
       color: white;
+    }
+  }
+}
+.deck {
+  border-top: 1px solid orangered;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  .deckItem {
+    cursor: pointer;
+    margin: 0.25rem 0.5rem;
+    &:hover {
+      color: orangered;
     }
   }
 }
