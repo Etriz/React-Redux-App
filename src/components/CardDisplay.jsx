@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getExactData, addToDeck } from "../actions/actions";
+import { getExactData, addToDeck, getLocalStorage } from "../actions/actions";
 
 const CardDisplay = (props) => {
   const handleClick = (name) => {
     props.getExactData(name);
   };
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("deck"));
+    if (data) {
+      props.getLocalStorage(data);
+    }
+    //eslint-disable-next-line
+  }, []);
 
   return (
     <div>
@@ -65,8 +72,9 @@ const mapStateToProps = (state) => {
   return {
     isFetchingData: state.isFetchingData,
     cardData: state.cardData,
+    deckData: state.deckData,
     error: state.error,
   };
 };
 
-export default connect(mapStateToProps, { getExactData, addToDeck })(CardDisplay);
+export default connect(mapStateToProps, { getExactData, addToDeck, getLocalStorage })(CardDisplay);

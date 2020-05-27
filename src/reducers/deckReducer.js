@@ -9,6 +9,12 @@ const initialState = {
 
 export const deckReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.LOCAL:
+      return {
+        ...state,
+        deckData: action.payload,
+      };
+
     case actionTypes.GET:
       return {
         ...state,
@@ -44,6 +50,7 @@ export const deckReducer = (state = initialState, action) => {
           });
         }
       };
+      localStorage.setItem("deck", JSON.stringify(addCard()));
       return {
         ...state,
         deckData: addCard(),
@@ -58,10 +65,16 @@ export const deckReducer = (state = initialState, action) => {
           } else return card;
         });
       };
-
+      localStorage.setItem("deck", JSON.stringify(removeCard()));
       return {
         ...state,
         deckData: removeCard(),
+      };
+    case actionTypes.CLEAR:
+      localStorage.setItem("deck", null);
+      return {
+        ...state,
+        deckData: [],
       };
     case actionTypes.ERROR:
       return {

@@ -1,12 +1,14 @@
 import axios from "axios";
 
 export const actionTypes = {
+  LOCAL: "LOCAL_STORAGE",
   GET: "GET_DATA",
   EXACT: "GET_EXACT_DATA",
   VIEW: "VIEW_CARD",
   ADD: "ADD_CARD",
   REMOVE: "REMOVE_CARD",
   ERROR: "SET_ERROR",
+  CLEAR: "CLEAR_ALL",
 };
 
 export const getData = (value) => (dispatch) => {
@@ -52,4 +54,10 @@ export const addToDeck = (value) => (dispatch) => {
 };
 export const removeFromDeck = (value) => (dispatch) => {
   dispatch({ type: actionTypes.REMOVE, payload: value });
+};
+export const clearAll = () => (dispatch) => {
+  dispatch({ type: actionTypes.CLEAR });
+};
+export const getLocalStorage = (value) => (dispatch) => {
+  dispatch({ type: actionTypes.LOCAL, payload: value });
 };

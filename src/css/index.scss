@@ -126,11 +126,33 @@ form {
     margin: 0.25rem 0.5rem;
     text-align: left;
   }
+  .tooManyCards {
+    display: inline-block;
+    width: 100%;
+    margin: 0.25rem 0.5rem;
+    text-align: left;
+    color: red;
+    font-weight: bolder;
+  }
   .deckItem {
     cursor: pointer;
     margin: 0.25rem 0.5rem;
     &:hover {
       color: orangered;
+    }
+  }
+  button {
+    cursor: pointer;
+    outline: none;
+    border: 1px solid orangered;
+    background: none;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 1rem;
+    &:hover {
+      background: orangered;
+      color: white;
     }
   }
 }
