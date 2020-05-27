@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { getData, addToDeck } from "../actions/actions";
+import { getExactData, addToDeck } from "../actions/actions";
 
 const CardDisplay = (props) => {
   const handleClick = (name) => {
-    props.getData(name);
+    props.getExactData(name);
   };
 
   return (
@@ -36,7 +36,7 @@ const CardDisplay = (props) => {
 const CardInfo = ({ card, addToDeck }) => {
   const [numToAdd, setNumToAdd] = useState("1");
   const handleChange = (e) => {
-    console.log("input change");
+    // console.log("input change");
     setNumToAdd(e.target.value);
   };
   return (
@@ -69,4 +69,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getData, addToDeck })(CardDisplay);
+export default connect(mapStateToProps, { getExactData, addToDeck })(CardDisplay);

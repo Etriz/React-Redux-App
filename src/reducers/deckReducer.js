@@ -15,6 +15,13 @@ export const deckReducer = (state = initialState, action) => {
         isFetchingData: true,
       };
 
+    case actionTypes.EXACT:
+      return {
+        ...state,
+        isFetchingData: false,
+        cardData: [action.payload],
+        error: "",
+      };
     case actionTypes.VIEW:
       return {
         ...state,
@@ -24,14 +31,14 @@ export const deckReducer = (state = initialState, action) => {
       };
 
     case actionTypes.ADD:
-      const currentDecklist = state.deckData;
-      const newIndex = currentDecklist.findIndex((card) => card.name === action.payload.name);
+      const addList = state.deckData;
+      const addIndex = addList.findIndex((card) => card.name === action.payload.name);
       const addCard = () => {
-        if (newIndex === -1) {
-          return [...currentDecklist, action.payload];
+        if (addIndex === -1) {
+          return [...addList, action.payload];
         } else {
-          return currentDecklist.map((card, index) => {
-            if (currentDecklist[index] === currentDecklist[newIndex]) {
+          return addList.map((card, index) => {
+            if (addList[index] === addList[addIndex]) {
               return action.payload;
             } else return card;
           });
@@ -42,9 +49,19 @@ export const deckReducer = (state = initialState, action) => {
         deckData: addCard(),
       };
     case actionTypes.REMOVE:
+      const removeList = state.deckData;
+      const removeIndex = removeList.findIndex((card) => card.name === action.payload.name);
+      const removeCard = () => {
+        return removeList.filter((card, index) => {
+          if (removeList[index] === removeList[removeIndex]) {
+            return null;
+          } else return card;
+        });
+      };
+
       return {
         ...state,
-        deckData: state.deckData,
+        deckData: removeCard(),
       };
     case actionTypes.ERROR:
       return {
