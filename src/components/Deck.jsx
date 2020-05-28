@@ -4,10 +4,14 @@ import { removeFromDeck, clearAll } from "../actions/actions";
 
 const Deck = (props) => {
   const [tooManyCards, setTooManyCards] = useState(false);
+  const [showDeck, setShowDeck] = useState(true);
   const totalCards = () => {
     let total = 0;
     props.deckData.map((card) => (total += Number(card.number)));
     return total;
+  };
+  const toggleDeck = () => {
+    setShowDeck(!showDeck);
   };
   useEffect(() => {
     const total = totalCards();
@@ -16,7 +20,10 @@ const Deck = (props) => {
   }, [props.deckData]);
 
   return (
-    <div className="deck">
+    <div className="deck deckSlide">
+      <button className="deckTab" onClick={toggleDeck}>
+        {showDeck ? "Hide Deck" : "Show Deck"}
+      </button>
       {props.deckData.length > 0 ? (
         <p className={tooManyCards ? "tooManyCards" : "totalCards"}>
           {totalCards()} / 60
