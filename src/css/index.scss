@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: whitesmoke;
+}
+.app {
+  margin: 0 auto;
+  padding: 2rem 0;
+  max-width: 500px;
+  text-align: center;
+  min-height: 100vh;
+  // border: 1px solid gray;
+  overflow: hidden;
+}
+form {
+  input {
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid orangered;
+    border-radius: 0.5rem 0 0 0.5rem;
+    padding: 0.5rem;
+    &:focus {
+      outline: none;
+      border: 2px solid orangered;
+      padding: 7px;
+    }
+  }
+  button {
+    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid orangered;
+    border-left: none;
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 0.5rem;
+    background: white;
+    &:hover {
+      background: orangered;
+      color: white;
+    }
+  }
+}
+.searchList {
+  max-width: 350px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  h3 {
+    width: 100%;
+  }
+  .last {
+    color: orangered;
+    font-weight: bold;
+  }
+}
+.searchItem {
+  margin: 0 0.5rem 0.5rem 0;
+  &:hover {
+    cursor: pointer;
+    color: orangered;
+  }
+}
+.card {
+  max-width: 350px;
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  text-align: start;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 0.5rem 0 lightgray;
+  background: white;
+  .cardTitle {
+    margin: 0.5rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  p {
+    width: 100%;
+    margin: 0.25rem auto;
+  }
+  input {
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid orangered;
+    border-radius: 0.5rem 0 0 0.5rem;
+    text-align: center;
+    padding: 0 0.25rem;
+    margin: 0.5rem 0 0;
+    height: 2.5rem;
+  }
+  button {
+    cursor: pointer;
+    outline: none;
+    border: 1px solid orangered;
+    background: none;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 0.5rem 0 0;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    &:hover {
+      background: orangered;
+      color: white;
+    }
+  }
+}
+.deck {
+  border: 1px solid orangered;
+  background: white;
+  margin-top: 2.5rem;
+  padding: 1rem;
+  padding-top: 0rem;
+  display: flex;
+  flex-wrap: wrap;
+  // background: white;
+  .deckTab {
+    content: "Show";
+    cursor: pointer;
+    outline: none;
+    border: 1px solid orangered;
+    background: orangered;
+    color: white;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin: 0.5rem 0 0 0.5rem;
+    margin-bottom: -1.5rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 1rem;
+    position: relative;
+    top: -2.25rem;
+    left: -1.25rem;
+  }
+  .totalCards {
+    display: inline-block;
+    width: 100%;
+    margin: 0.25rem 0.5rem;
+    text-align: left;
+  }
+  .tooManyCards {
+    display: inline-block;
+    width: 100%;
+    margin: 0.25rem 0.5rem;
+    text-align: left;
+    color: red;
+    font-weight: bolder;
+  }
+  .deckItem {
+    cursor: pointer;
+    margin: 0.25rem 0.5rem;
+    &:hover {
+      color: orangered;
+    }
+  }
+  button {
+    cursor: pointer;
+    outline: none;
+    border: 1px solid orangered;
+    background: none;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0 0 0.5rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 1rem;
+    &:hover {
+      background: orangered;
+      color: white;
+    }
+  }
+}
+.deckSlide {
+  width: 100%;
+  max-width: 500px;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%);
+}
